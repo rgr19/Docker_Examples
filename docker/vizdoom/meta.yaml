@@ -1,0 +1,40 @@
+{% set name = "vizdoom" %}
+{% set version = "1.1.7" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: d9c4c85cd98fd3e0b334af73ed962f33227963f66ddfd35b501229af3b724c5d
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+
+requirements:
+  host:
+    - numpy
+    - pip
+    - python
+  run:
+    - numpy
+    - python
+
+test:
+  imports:
+    - vizdoom
+
+about:
+  home: http://vizdoom.cs.put.edu.pl/
+  license: MIT
+  license_family: MIT
+  license_file: 
+  summary: Reinforcement learning platform based on Doom
+  doc_url: 
+  dev_url: 
+
+extra:
+  recipe-maintainers:
+    - your-github-id-here
